@@ -2,56 +2,63 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Calculadora de Notas - GNA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Promedios - GNA</title>
     <style>
-        body { font-family: sans-serif; background-color: #f4f4f4; padding: 20px; }
-        .contenedor { background: white; max-width: 500px; margin: auto; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h2 { color: #004a99; text-align: center; }
-        .materia-bloque { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
-        input { display: block; width: 90%; margin: 5px 0; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-        button { width: 100%; background: #28a745; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        .resultados { background: #e9ecef; padding: 15px; margin-top: 20px; border-radius: 4px; }
-    </style>
-</head>
-<body>
-    <div class="contenedor">
-        <h2>Ingreso de Calificaciones</h2>
-        <form action="/calcular" method="post">
-            
-            <div class="materia-bloque">
-                <input type="text" name="m1" placeholder="Nombre Materia 1" required>
-                <input type="number" name="n1" placeholder="Nota 1" min="1" max="10" required>
-                <input type="number" name="n2" placeholder="Nota 2" min="1" max="10" required>
-                <input type="number" name="n3" placeholder="Nota 3" min="1" max="10" required>
-            </div>
-
-            <div class="materia-bloque">
-                <input type="text" name="m2" placeholder="Nombre Materia 2" required>
-                <input type="number" name="n4" placeholder="Nota 1" min="1" max="10" required>
-                <input type="number" name="n5" placeholder="Nota 2" min="1" max="10" required>
-                <input type="number" name="n6" placeholder="Nota 3" min="1" max="10" required>
-            </div>
-
-            <div class="materia-bloque">
-                <input type="text" name="m3" placeholder="Nombre Materia 3" required>
-                <input type="number" name="n7" placeholder="Nota 1" min="1" max="10" required>
-                <input type="number" name="n8" placeholder="Nota 2" min="1" max="10" required>
-                <input type="number" name="n9" placeholder="Nota 3" min="1" max="10" required>
-            </div>
-
-            <button type="submit">Calcular y Guardar en Base de Datos</button>
-        </form>
-
-        {% if resultados %}
-            <div class="resultados">
-                <h3>Resultados del Sistema:</h3>
-                <ul>
-                {% for fila in resultados %}
-                    <li><strong>{{ fila[0] }}</strong></li>
-                {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-    </div>
-</body>
-</html>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            border-top: 8px solid #2e4d23; /* Verde Oliva GNA */
+        }
+        h2 {
+            text-align: center;
+            color: #2e4d23;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 1.2em;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Evita que se salga del cuadro */
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2e4d23;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #1b3015;
+        }
+        .footer {
+            text-align: center;
